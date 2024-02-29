@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Models
+use App\Http\Controllers\Admin\ComicController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +26,5 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('subpages.about');
 });
+
+Route::resource('comics', ComicController::class);
