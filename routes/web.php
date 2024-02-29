@@ -27,4 +27,5 @@ Route::get('/about', function () {
     return view('subpages.about');
 });
 
+// CRUD Comics
 Route::resource('comics', ComicController::class);
