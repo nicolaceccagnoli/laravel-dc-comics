@@ -1,0 +1,21 @@
+@import "~bootstrap/scss/bootstrap";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    background-color: plum;
+}
+
+.spiderman-img {
+    height: 200px;
+}
+
+.spiderman-bg {
+    height: 200px;
+    background-image: url('../img/spiderman2099.webp');
+    background-size: contain;
+}
