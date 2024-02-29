@@ -10,11 +10,6 @@
             'label' => 'Chi siamo',
             'active' => true,
         ],
-        [
-            'url' => '/comics/index',
-            'label' => 'Comics',
-            'active' => true,
-        ],
     ];
 @endphp
 
@@ -28,6 +23,9 @@
                     </a>
                 </li>
             @endforeach
+            <a href="{{ route('comics.index') }}">
+                Comics
+            </a>
         </ul>
     </nav>
 </header>
