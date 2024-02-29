@@ -8,6 +8,17 @@
         {{ $title }}
     </h1>
 
+
+    <div class="row">
+        <div class="col">
+            <div class="mb-4">
+                <a href="{{ route('comics.create') }}" class="btn btn-success w-100 fs-5">
+                    + AGGIUNGI
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         @foreach ($comics as $singleComic)
             <div class="col-auto m-auto card" style="width: 18rem;">
