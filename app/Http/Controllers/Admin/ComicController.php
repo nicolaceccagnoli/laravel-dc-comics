@@ -41,10 +41,20 @@ class ComicController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    // Utilizzo la dependency injection
+    public function show(Comic $comic)
     {
         //
+        return view('comics.show', compact('comic'));
     }
+
+    // public function show(string $id)
+    // {
+    //     //
+    //     $comic = Comic::findOrFail($id);
+
+    //     return view('comics.show', compact('comic'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
