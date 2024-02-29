@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $title = 'Template Starter Laravel';
+    $title = 'Laravel DC Comics';
 
     return view('welcome', ['title'=> $title]);
 });

@@ -9,16 +9,16 @@
             'url' => '/about',
             'label' => 'Chi siamo',
             'active' => true,
-        ]
+        ],
     ];
 @endphp
 
 <header>
     <nav>
-        <ul>
+        <ul class="d-flex justify-content-around p-0 m-0">
             @foreach ($links as $link)
-                <li>
-                    <a href="{{ $link['url'] }}">
+                <li class="list-unstyled">
+                    <a class="text-decoration-none" href="{{ $link['url'] }}">
                         {{ $link['label'] }}
                     </a>
                 </li>
