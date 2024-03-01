@@ -29,6 +29,9 @@
                     <a href="{{ route('comics.show', ['comic' => $singleComic->id]) }}" class="btn btn-primary">
                         Vai al singolo comic
                     </a>
+                    <a href="{{ route('comics.edit', ['comic' => $singleComic->id]) }}" class="btn btn-warning">
+                        Modifica
+                    </a>
                 </div>
             </div>
         @endforeach
