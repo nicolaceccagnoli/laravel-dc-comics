@@ -130,7 +130,7 @@ class ComicController extends Controller
         //
         $comic->delete();
 
-        return redirect()->route('comics.index', ['comic'=> $comic->id]);
+        return redirect()->route('comics.index');
 
     }
 }
