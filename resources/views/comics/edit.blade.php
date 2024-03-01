@@ -50,7 +50,6 @@
                             placeholder="Inserisci la tipologia di" maxlength="64" required>
                     </div>
 
-
                     <div class="mb-3">
                         <label for="description" class="form-label">Inserisci la descrizione</label>
                         <textarea class="form-control" id="description" name="description" placeholder="Inserisci la descrizione"

@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
-@section('page-title', 'Single Comic')
+@section('page-title', $comic->title . 'Show')
 
 @section('main-content')
+
+    <h1>
+        {{ $comic->title }}
+    </h1>
 
     <div class="row my-5">
         <div class="col text-center">
