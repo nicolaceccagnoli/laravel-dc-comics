@@ -43,18 +43,20 @@ class ComicController extends Controller
 
         // dd($comicData);
 
-        $comic = new Comic();
+        $comic = Comic::create($comicData);
 
-        $comic->thumb = $comicData['thumb'];
-        $comic->title = $comicData['title'];
-        $comic->price = $comicData['price'];
-        $comic->series = $comicData['series'];
-        $comic->type = $comicData['type'];
-        $comic->description = $comicData['description'];
-        $comic->writers = $comicData['writers'];
-        $comic->artists = $comicData['artists'];
-        $comic->sale_date = $comicData['sale_date'];
-        $comic->save();
+        // $comic = new Comic();
+
+        // $comic->thumb = $comicData['thumb'];
+        // $comic->title = $comicData['title'];
+        // $comic->price = $comicData['price'];
+        // $comic->series = $comicData['series'];
+        // $comic->type = $comicData['type'];
+        // $comic->description = $comicData['description'];
+        // $comic->writers = $comicData['writers'];
+        // $comic->artists = $comicData['artists'];
+        // $comic->sale_date = $comicData['sale_date'];
+        // $comic->save();
 
         // dd($comic);
 
@@ -123,8 +125,12 @@ class ComicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Comic $comic)
     {
         //
+        $comic->delete();
+
+        return redirect()->route('comics.index', ['comic'=> $comic->id]);
+
     }
 }
