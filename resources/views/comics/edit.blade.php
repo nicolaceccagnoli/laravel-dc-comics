@@ -11,13 +11,27 @@
     <div class="row">
         <div class="col py-4">
             <div class="mb-4">
+                {{-- Pulsante per reindirizzare alla vista di tutti i Comics --}}
                 <a href="{{ route('comics.index') }}" class="btn btn-primary">
                     Torna ai comics
                 </a>
 
+                {{-- Ricreo un FORM per la modifica dei Comic pressochè identico a quello per la creazione
+                    tranne per il suo value che sarà il record già presente nel singolo Comic
+                    che riporterà alla rotta update del controller, passo sempre come argomento l'id del singolo comic --}}
                 <form action="{{ route('comics.update', ['comic' => $comic->id]) }}" method="POST">
+                    {{-- 
+                        Cross
+                        Site
+                        Request
+                        Forgery
+                        Genera un input nascosto con un token all'interno per verificare che tutte le richieste
+                        del front-end provengano dal sito stesso e si usa per le richieste in POST
+                    --}}
                     @csrf
 
+                    {{-- Richiamo il metodo PUT che non può essere passato come method direttamente al FORM;
+                        viene utilizzato per aggiornamenti completi dell'istanza del DB --}}
                     @method('PUT')
 
                     <div class="mb-3">

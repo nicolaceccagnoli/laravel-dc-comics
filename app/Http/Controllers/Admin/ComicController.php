@@ -17,6 +17,7 @@ class ComicController extends Controller
     {
         $title = 'Tutti i Comics';
 
+        // Richiamo il Model dei Comic per eseguire la stampa in pagina
         $comics = Comic::all();
 
         return view('comics.index', compact('title', 'comics'));
@@ -36,14 +37,18 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        // Assegna tutti i dati inviati nella richiesta
-        // HTTP al controller alla variabile 
+        // Assegna tutti i dati inviati dal FORM nella richiesta
+        // HTTP al controller alla variabile
         // inviati tramite POST
         $comicData = $request->all();
 
         // dd($comicData);
 
+        // Creo una nuova istanza di Comic grazie alla funzione statica create
+        // possibile grazie al Mass Assignment
         $comic = Comic::create($comicData);
+
+        // OPPURE 
 
         // $comic = new Comic();
 
@@ -74,9 +79,14 @@ class ComicController extends Controller
         return view('comics.show', compact('comic'));
     }
 
+    // OPPURE passo l'id come argomento 
     // public function show(string $id)
     // {
-    //     //
+
+    //     findOrFail fa si che quando viene trovato
+    //     l'id che stiamo cercando viene assegnato a $comic
+    //     altrimenti viene verrà generata un eccezione
+
     //     $comic = Comic::findOrFail($id);
 
     //     return view('comics.show', compact('comic'));
@@ -96,16 +106,31 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        // Assegna tutti i dati inviati dal FORM nella richiesta
+        // HTTP al controller alla variabile
+        // inviati tramite POST
         $comicData = $request->all();
 
         // TODO: valido i dati, ma lo faremo in futuro
 
+        // Utilizziamo il metodo update() su un'istanza di Comic
+        // per aggiornare i suoi attributi con i dati forniti 
+        // da $comicData, possibile grazie al Mass Assignment
         $comic->update($comicData);
 
         // OPPURE
 
+        // utilizziamo metodo fill per preparare un modello Comic
+        // con i dati forniti senza aggiornarla effettivamente 
+
         // $comic->fill($comicData);
+
+        // serve richiamare metodo save()
         // $comic->save();
+
+        // OPPURE
+        // aggiorno singolarmente gli attributi del modello Comic
+        // (senza richiamare una nuova istanza)
 
         // $comic->title = $comicData['title'];
         // $comic->description = $comicData['description'];
@@ -127,7 +152,8 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        // Il metodo delete() ci serve per 
+        // cancellare un record da una tabella
         $comic->delete();
 
         return redirect()->route('comics.index');

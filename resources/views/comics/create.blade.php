@@ -6,7 +6,18 @@
 
 @section('main-content')
 
+    {{-- Creo un FORM per la creazione di un nuovo Comic;
+        il name dei campi input non deve essere necessariamente lo stesso 
+        del nome della colonna della Tabella Comic, ma è meglio che corrispondano --}}
     <form action="{{ route('comics.store') }}" method="POST">
+        {{-- 
+            Cross
+            Site
+            Request
+            Forgery
+            Genera un input nascosto con un token all'interno per verificare che tutte le richieste
+            del front-end provengano dal sito stesso e si usa per le richieste in POST
+        --}}
         @csrf
 
         <div class="mb-3">

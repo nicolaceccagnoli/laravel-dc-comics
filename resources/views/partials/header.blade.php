@@ -1,15 +1,21 @@
 @php
     $links = [
         [
-            'url' => '/',
+            'url' => 'welcome',
             'label' => 'Home',
             'active' => true,
         ],
         [
-            'url' => '/about',
+            'url' => 'subpages.about',
             'label' => 'Chi siamo',
             'active' => true,
         ],
+        [
+            'url' => 'comics.index',
+            'label' => 'Comics',
+            'active' => true,
+        ],
+
     ];
 @endphp
 
@@ -18,14 +24,11 @@
         <ul class="d-flex justify-content-around p-0 m-0">
             @foreach ($links as $link)
                 <li class="list-unstyled">
-                    <a class="text-decoration-none" href="{{ $link['url'] }}">
+                    <a class="text-decoration-none" href="{{ route($link['url']) }}">
                         {{ $link['label'] }}
                     </a>
                 </li>
             @endforeach
-            <a href="{{ route('comics.index') }}">
-                Comics
-            </a>
         </ul>
     </nav>
 </header>

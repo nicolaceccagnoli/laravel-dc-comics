@@ -15,6 +15,9 @@ class Comic extends Model
      * @var array<int, string>
      */
 
+    // L'assegnazione di massa ci permette di mettere all'interno di 
+    // un'istanza tutti i dati passati alla richiesta, specificando però
+    // quali dati possono essere passati
     // I campi che sono mass assignable sono:
     protected $fillable = [
         'title',

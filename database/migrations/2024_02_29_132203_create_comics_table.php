@@ -12,6 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comics', function (Blueprint $table) {
+
+            // Definiamo la struttura della Tabella Comics del nostro Database
             $table->id();
             $table->string('title', 64);
             $table->text('description')->nullable();

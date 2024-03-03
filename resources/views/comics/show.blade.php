@@ -8,6 +8,7 @@
         {{ $comic->title }}
     </h1>
 
+    {{-- Creo un pulsante che riporti all'index dei Comics --}}
     <div class="row my-5">
         <div class="col text-center">
             <a href="{{ route('comics.index') }}" class="btn btn-primary">
@@ -16,7 +17,7 @@
         </div>
     </div>
 
-
+    {{-- Inizio del singolo Comic --}}
     <div class="row">
         <div class="col-auto m-auto card" style="width: 30rem;">
             <img src="{{ $comic['thumb'] }}" class="card-img-top" alt="{{ $comic['title'] }}">
@@ -55,5 +56,6 @@
             </div>
         </div>
     </div>
+    {{-- Fine del singolo Comic --}}
 
 @endsection

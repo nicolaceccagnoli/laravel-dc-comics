@@ -21,11 +21,11 @@ Route::get('/', function () {
     $title = 'Laravel DC Comics';
 
     return view('welcome', ['title'=> $title]);
-});
+})->name('welcome');
 
 Route::get('/about', function () {
     return view('subpages.about');
-});
+})->name('subpages.about');
 
 // CRUD Comics
 Route::resource('comics', ComicController::class);

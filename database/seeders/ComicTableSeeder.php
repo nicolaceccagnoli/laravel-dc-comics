@@ -14,12 +14,16 @@ class ComicTableSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        // Richiamiamo dalla cartella config il file 'comics' che contiene la 
+        // struttura dei dati da passare al DB
         $comicData = config('comics');
 
+        // Creiamo un ciclo per cui
         foreach ($comicData as $index=> $singleComic) {
+            // Ad ogni comic presente nel file viene creata una nuova istanza del Model Comic
             $comic = new Comic();
 
+            // E gestiamo l'inserimento dei dati all'interno del DB
             $comic->title = $singleComic['title'];
             $comic->description = $singleComic['description'];
             $comic->thumb = $singleComic['thumb'];

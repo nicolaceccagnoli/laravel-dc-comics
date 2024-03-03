@@ -8,17 +8,20 @@
         {{ $title }}
     </h1>
 
-
+    {{-- Inizio del Pulsante 'AGGIUNGI', per creare un nuovo Model Comic --}}
     <div class="row">
         <div class="col">
             <div class="mb-4">
+                {{-- Rimandiamo alla rotta create del Controller --}}
                 <a href="{{ route('comics.create') }}" class="btn btn-success w-100 fs-5">
                     + AGGIUNGI
                 </a>
             </div>
         </div>
     </div>
+    {{-- Fine del Pulsante 'AGGIUNGI --}}
 
+    {{-- Inizio della stampa dei Comic --}}
     <div class="row">
         @foreach ($comics as $singleComic)
             <div class="col-auto m-auto card" style="width: 18rem;">
@@ -29,13 +32,18 @@
                     <a href="{{ route('comics.show', ['comic' => $singleComic->id]) }}" class="btn btn-primary">
                         Vai al singolo comic
                     </a>
+
+                    {{-- Rimandiamo alla rotta edit del controller e passiamo come argomento l'id del singolo Comic --}}
                     <a href="{{ route('comics.edit', ['comic' => $singleComic->id]) }}" class="btn btn-warning">
                         Modifica
                     </a>
+
+                    {{-- Aggiungiamo un pulsante Elimina che aprirà una modale --}}
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $singleComic->id }}">
                         Elimina
                     </button>
             
+                    {{-- Inizio della modale inseriamo il form per l'eliminazione del singolo fumetto --}}
                     <div class="modal fade" id="staticBackdrop-{{ $singleComic->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
@@ -50,10 +58,21 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              {{-- Creiamo il form per l'eliminazione che con l'action reindirizza alla rotta destroy del controller, 
+                              come argomento passo l'id del singolo comic--}}
                               <form 
                                     action="{{ route('comics.destroy', ['comic' => $singleComic->id]) }}" 
                                     method="POST">
+                                    {{-- 
+                                        Cross
+                                        Site
+                                        Request
+                                        Forgery
+                                        Genera un input nascosto con un token all'interno per verificare che tutte le richieste
+                                        del front-end provengano dal sito stesso e si usa per le richieste in POST
+                                    --}}
                                     @csrf
+                                    {{-- Richiamo il metodo DELETE che non può essere inserito nel FORM --}}
                                     @method('DELETE')
                                         <button 
                                         type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -64,16 +83,11 @@
                           </div>
                         </div>
                     </div>
+                    {{-- Fine modale --}}
                 </div>
             </div>
         @endforeach
     </div>
-@endsection
+    {{-- Fine della stampa dei Comic --}}
 
-@section('body-imports')
-    <script>
-        let comicId = document.getElementById('data-comic-id');
-
-        console.log('id del comic: ', comicId);
-    </script>
 @endsection
