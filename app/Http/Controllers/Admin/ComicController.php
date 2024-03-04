@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 // Models
 use App\Models\Comic;
 
+// Form Request
+use App\Http\Requests\StoreComicRequest;
+
+
 class ComicController extends Controller
 {
     /**
@@ -35,18 +39,21 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
         // Assegna tutti i dati inviati dal FORM nella richiesta
         // HTTP al controller alla variabile
         // inviati tramite POST
-        $comicData = $request->all();
+        // $comicData = $request->all();
+
+        // uso il metodo validated() 
+        $validatedComicData = $request->validated();
 
         // dd($comicData);
 
         // Creo una nuova istanza di Comic grazie alla funzione statica create
         // possibile grazie al Mass Assignment
-        $comic = Comic::create($comicData);
+        $comic = Comic::create($validatedComicData);
 
         // OPPURE 
 
