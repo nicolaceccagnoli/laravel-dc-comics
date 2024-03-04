@@ -10,7 +10,7 @@ use App\Models\Comic;
 
 // Form Request
 use App\Http\Requests\StoreComicRequest;
-
+use App\Http\Requests\UpdateComicRequest;
 
 class ComicController extends Controller
 {
@@ -111,19 +111,20 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comic $comic)
+    public function update(UpdateComicRequest $request, Comic $comic)
     {
         // Assegna tutti i dati inviati dal FORM nella richiesta
         // HTTP al controller alla variabile
         // inviati tramite POST
-        $comicData = $request->all();
+        // $comicData = $request->all();
 
-        // TODO: valido i dati, ma lo faremo in futuro
+        // uso il metodo validated() 
+        $validatedComicData = $request->validated();
 
         // Utilizziamo il metodo update() su un'istanza di Comic
         // per aggiornare i suoi attributi con i dati forniti 
         // da $comicData, possibile grazie al Mass Assignment
-        $comic->update($comicData);
+        $comic->update($validatedComicData);
 
         // OPPURE
 
